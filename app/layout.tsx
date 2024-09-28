@@ -6,6 +6,7 @@ const poppins = Poppins({
     subsets: ["latin"],
     variable: "--font-poppins",
     weight: ["100", "200", "400", "500", "600", "700", "800", "900"],
+    display: "swap",
 });
 const ibmPlexSerif = IBM_Plex_Serif({
     subsets: ["latin"],
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     title: "Horizon",
     description: "Horizon is a modern banking platform for everyone",
     icons: {
-        icon: "/icon/logo.svg",
+        icon: "/icons/logo.svg",
     },
 };
 
