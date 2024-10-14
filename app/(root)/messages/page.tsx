@@ -4,8 +4,11 @@ import HeaderNotifications from "@/components/HeaderNotifications";
 import MessageSidebar from "@/components/MessageSidebar";
 import MobileNav from "@/components/MobileNav";
 import SingleMessage from "@/components/SingleMessage";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import { IoIosArrowRoundBack } from "react-icons/io";
+import { IoArrowBackSharp } from "react-icons/io5";
 import { TbSend2 } from "react-icons/tb";
 
 const messages = [
@@ -50,11 +53,10 @@ export default function Messages() {
                     <HeaderNotifications />
                 </div>
             </header>
-
-            <div className="absolute top-[127px] md:top-0 ml-0 md:left-[140px] lg:left-[150px] 2xl:left-[194px] w-[300px] bg-[#C1E6F8]/40 h-screen flex">
+            <div className="absolute top-[127px] md:top-0 ml-0 md:left-[140px] lg:left-[150px] 2xl:left-[194px] w-full sm:w-[300px] bg-[#C1E6F8]/40 h-screen flex z-40">
                 <MessageSidebar />
             </div>
-            <div className="ml-[300px] w-full h-chat flex flex-col justify-between">
+            <div className="ml-[300px] w-full h-chat hidden sm:flex flex-col justify-between">
                 <div className="flex flex-col w-full gap-2 mt-5">
                     {messages.map((message, index) => (
                         <SingleMessage
@@ -66,6 +68,31 @@ export default function Messages() {
                     ))}
                 </div>
                 <div className="flex items-center">
+                    <Input type="input" placeholder="Type Message" />
+
+                    <div>
+                        <TbSend2 />
+                    </div>
+                </div>
+            </div>
+            {/* Chat Popup Modal */}
+            <div className="w-full h-chat sm:hidden fixed top-[127px] left-0 flex flex-col justify-between z-[9999] bg-[#f6f9fc] px-4">
+                <div className="flex flex-col w-full gap-2">
+                    <Button className="justify-start flex items-center my-3 w-fit bg-slate-200">
+                        <IoIosArrowRoundBack className="text-4xl text-blue-600 font-bold" />
+                        Go Back
+                    </Button>
+
+                    {messages.map((message, index) => (
+                        <SingleMessage
+                            key={index}
+                            message={message.message}
+                            isSender={message.isSender}
+                            senderImg={message.senderImg}
+                        />
+                    ))}
+                </div>
+                <div className="flex items-center mb-4 ">
                     <Input type="input" placeholder="Type Message" />
 
                     <div>
