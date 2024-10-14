@@ -1,37 +1,29 @@
-import HeaderBox from "@/components/HeaderBox";
-import RightSidebar from "@/components/RightSidebar";
-import TotalBalanceBox from "@/components/TotalBalanceBox";
+import Calendar from "@/components/MyCalendar";
+import FindPatientsCard from "@/components/FindPatientsCard";
+import LabInfoSystem from "@/components/LabInfoSystem";
+import Overview from "@/components/Overview";
+import OverviewTestCards from "@/components/OverviewTestCards";
+import RecentLabTests from "@/components/RecentLabTests";
+import ScheduledTasks from "@/components/ScheduledTasks";
+
 import React from "react";
+import Header from "@/components/Header";
 
 export default function Home() {
-    const loggedIn = {
-        firstName: "Cybermaxi",
-        lastName: "Dev",
-        email: "cybermaxi@yahoo.com",
-    };
     return (
-        <section className="home font-poppins">
-            <div className="home-content">
-                <header className="home-header">
-                    <HeaderBox
-                        type="greeting"
-                        title="Welcome"
-                        user={loggedIn?.firstName || "Guest"}
-                        subtext="Access and manage your accounts and transactions effectively"
-                    />
-                    <TotalBalanceBox
-                        accounts={[]}
-                        totalBanks={1}
-                        totalCurrentBalance={1250.35}
-                    />
-                </header>
-                RECENT TRANSACTIONS
+        <div>
+            <Header heading="Good Day," subheading="Have a good day at work." />
+            <div className="grid grid-cols-1 xl:grid-cols-[2fr_1fr] lg:grid-cols-[60%_37%] w-full mt-7 gap-10 mb-10">
+                <div className="flex flex-col gap-8">
+                    <Overview />
+                    <OverviewTestCards />
+                </div>
+                <FindPatientsCard />
+                <LabInfoSystem />
+                <ScheduledTasks />
+                <RecentLabTests />
+                <Calendar />
             </div>
-            <RightSidebar
-                user={loggedIn}
-                transactions={[]}
-                banks={[{ currentBalance: 123.4 }, { currentBalance: 431.4 }]}
-            />
-        </section>
+        </div>
     );
 }

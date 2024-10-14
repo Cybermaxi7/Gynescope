@@ -1,62 +1,25 @@
-"use client";
-import { sidebarLinks } from "@/constants";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
+import Nav from "./Nav";
+// import MobileNav from "./MobileNav";
 
-export default function Sidebar({ user }: SiderbarProps) {
-    const pathName = usePathname();
+export default function Sidebar() {
     return (
-        <aside className="sidebar">
-            <nav className="flex flex-col gap-4 ">
-                <Link
-                    href="/"
-                    className="mb-12 cursor-pointer flex items-center gap-2"
-                >
+        <div>
+            <aside className="hidden md:flex flex-col w-[140px] lg:w-[150px] 2xl:w-[194px] min-h-screen bg-[#1C7DB4] fixed">
+                {/* logo */}
+                <Link href="/" className="w-full">
                     <Image
-                        src="/icons/logo.svg"
-                        width={34}
-                        height={34}
-                        alt="Horizon Logo"
-                        className="size-[24px] max-xl:size-14"
+                        src="/icons/dashboardlogo.svg"
+                        width={194}
+                        height={60}
+                        className="ml-4"
+                        alt="genyscope logo"
                     />
-                    <h1 className="sidebar-logo">Horizon</h1>
                 </Link>
-                {sidebarLinks.map((link) => {
-                    const isActive =
-                        pathName === link.route ||
-                        pathName.startsWith(`${link.route}/`);
-                    return (
-                        <Link
-                            className={cn("sidebar-link", {
-                                "bg-bank-gradient": isActive,
-                            })}
-                            href={link.route}
-                            key={link.label}
-                        >
-                            <div className="relative size-6">
-                                <Image
-                                    src={link.imgURL}
-                                    alt={link.label}
-                                    fill
-                                    className={cn({
-                                        "brightness-[3] invert-0": isActive,
-                                    })}
-                                />
-                            </div>
-                            <p
-                                className={cn("sidebar-label", {
-                                    "!text-white": isActive,
-                                })}
-                            >
-                                {link.label}
-                            </p>
-                        </Link>
-                    );
-                })}
-            </nav>
-        </aside>
+
+                <Nav />
+            </aside>
+        </div>
     );
 }

@@ -8,90 +8,80 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
-import { sidebarLinks } from "@/constants";
+import sidebarItems from "@/lib/sidebarItems";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { RiMenu2Fill } from "react-icons/ri";
 
 export default function MobileNav({ user }: MobileNavProps) {
-    const pathName = usePathname();
+    const pathname = usePathname();
     return (
-        <nav className="w-full max-w-[264px]">
+        <nav className="w-full max-w-[194px]">
             <Sheet>
-                <SheetTrigger>
-                    <Image
+                <SheetTrigger className="mt-3  mr-3">
+                    {/* <Image
                         src="/icons/hamburger.svg"
                         alt="menu logo"
-                        width={30}
-                        height={30}
+                        width={40}
+                        height={40}
                         className="cursor-pointer"
-                    />
+                    /> */}
+                    <RiMenu2Fill className="text-4xl" />
                 </SheetTrigger>
-                <SheetContent className="border-none bg-white ">
-                    <Link
-                        href="/"
-                        className=" cursor-pointer flex items-center gap-1 px-4"
-                    >
-                        <Image
-                            src="/icons/logo.svg"
-                            width={34}
-                            height={34}
-                            alt="Horizon Logo"
-                        />
-                        <h1 className="text-[26px] font-ibm-plex-serif font-bold text-black-1">
-                            Horizon
-                        </h1>
-                    </Link>
-                    <div className="mobilenav-sheet">
-                        <SheetClose asChild>
-                            <nav className="flex h-full flex-col gap-6 pt-16 text-white">
-                                {sidebarLinks.map((link) => {
-                                    const isActive =
-                                        pathName === link.route ||
-                                        pathName.startsWith(`${link.route}/`);
-                                    return (
-                                        <SheetClose asChild key={link.route}>
-                                            <Link
-                                                className={cn(
-                                                    "mobilenav-sheet_close",
-                                                    {
-                                                        "bg-bank-gradient":
-                                                            isActive,
-                                                    }
-                                                )}
-                                                href={link.route}
-                                                key={link.label}
-                                            >
-                                                <div className="relative size-6">
-                                                    <Image
-                                                        src={link.imgURL}
-                                                        alt={link.label}
-                                                        fill
-                                                        className={cn({
-                                                            "brightness-[3] invert-0":
-                                                                isActive,
-                                                        })}
-                                                    />
-                                                </div>
-                                                <p
-                                                    className={cn(
-                                                        "sidebar-label",
-                                                        {
-                                                            "!text-white":
-                                                                isActive,
-                                                        }
-                                                    )}
+                <SheetContent
+                    className="flex flex-col w-[140px] bg-[#1C7DB4] fixed border-none z-[999]"
+                    side="left"
+                >
+                    <SheetHeader>
+                        <SheetTitle className="hidden">Sidebar</SheetTitle>
+                        <SheetDescription className="hidden">
+                            My Sidebar
+                        </SheetDescription>
+                        <Link href="/" className="w-full">
+                            <Image
+                                src="/icons/dashboardlogo.svg"
+                                width={160}
+                                height={60}
+                                className="max-w-max absolute top-2 left-2"
+                                alt="genyscope logo"
+                            />
+                        </Link>
+                        <div className="mobilenav-sheet">
+                            <SheetClose asChild>
+                                <nav className="flex h-full flex-col gap-2 pt-16 text-white">
+                                    {sidebarItems.map((link) => {
+                                        const isActive = pathname === link.link; // Check if the current route matches the link
+
+                                        return (
+                                            <SheetClose asChild key={link.link}>
+                                                <Link
+                                                    className={`flex flex-col items-center justify-center py-3 gap-1 transition-all duration-300 ease-in-out hover:bg-white/20 ${
+                                                        isActive
+                                                            ? "border-r-4 border-[#F98E30]" // Active styles
+                                                            : "hover:border-r-4 hover:border-[#F98E30]" // Hover styles
+                                                    }`}
+                                                    key={link.link}
+                                                    href={link.link}
                                                 >
-                                                    {link.label}
-                                                </p>
-                                            </Link>
-                                        </SheetClose>
-                                    );
-                                })}
-                            </nav>
-                        </SheetClose>
-                    </div>
+                                                    <Image
+                                                        src={link.icon}
+                                                        width={22}
+                                                        height={22}
+                                                        alt={link.alt}
+                                                    />
+                                                    <p className="text-white text-xs font-medium">
+                                                        {link.title}
+                                                    </p>
+                                                </Link>
+                                            </SheetClose>
+                                        );
+                                    })}
+                                </nav>
+                            </SheetClose>
+                        </div>
+                    </SheetHeader>
                 </SheetContent>
             </Sheet>
         </nav>

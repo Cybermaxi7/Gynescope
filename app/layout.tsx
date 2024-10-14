@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
-import { Poppins, IBM_Plex_Serif } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
+import { AOSInit } from "@/components/aos";
 
 const poppins = Poppins({
     subsets: ["latin"],
     variable: "--font-poppins",
     weight: ["100", "200", "400", "500", "600", "700", "800", "900"],
-    display: "swap",
+    // display: "swap",
 });
-const ibmPlexSerif = IBM_Plex_Serif({
-    subsets: ["latin"],
-    weight: ["400", "700"],
-    variable: "--font-ibm-plex-serif",
-});
+
 export const metadata: Metadata = {
-    title: "Horizon",
-    description: "Horizon is a modern banking platform for everyone",
+    title: "Genyscope",
+    description: "Genyscope is a modern laboratory test and operations plaform",
     icons: {
         icon: "/icons/logo.svg",
     },
@@ -28,9 +25,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body
-                className={`${poppins.variable} ${ibmPlexSerif.variable} antialiased`}
-            >
+            <AOSInit />
+
+            <body className={`${poppins.variable} antialiased w-full`}>
                 {children}
             </body>
         </html>
