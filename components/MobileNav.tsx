@@ -15,7 +15,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { RiMenu2Fill } from "react-icons/ri";
 
-export default function MobileNav({ user }: MobileNavProps) {
+export default function MobileNav() {
     const pathname = usePathname();
     return (
         <nav className="w-full max-w-[194px]">
