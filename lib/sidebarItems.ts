@@ -1,3 +1,9 @@
+interface SidebarItem {
+    title: string;
+    icon: string;
+    link: string;
+    alt: string;
+}
 const sidebarItems: SidebarItem[] = [
     {
         title: "Dashboard",

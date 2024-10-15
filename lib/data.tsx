@@ -118,7 +118,7 @@ type ReportDetails = {
     testRequired: string;
 };
 
-export const reportDetails = {
+export const reportDetails: ReportDetails = {
     clinicalDetails: "Hematology/Serology Report",
     dateTime: "01-05-2022 9:39am",
     specimen: "Blood",
