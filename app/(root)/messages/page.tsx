@@ -101,7 +101,7 @@ export default function Messages() {
                             />
                         ))}
                     </div>
-                    <div className="flex items-center mb-4 ">
+                    <div className="flex items-center mb-8 md:mb-4 ">
                         <Input type="input" placeholder="Type Message" />
 
                         <Button className="w-10 h-10 rounded-full bg-[#EFF6FB] border border-[#CDEDFC] flex items-center p-0 justify-center">

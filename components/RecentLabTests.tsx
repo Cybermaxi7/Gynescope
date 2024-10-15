@@ -12,11 +12,11 @@ export default function RecentLabTests() {
             <CardContent>
                 {/* Ensure the parent container of the table has overflow-x-auto */}
                 <div className="w-full overflow-x-auto">
-                    <table className="min-w-[600px] w-full table-auto">
+                    <table className="min-w-[600px] w-full table h-full">
                         <thead>
                             <tr>
                                 <th className="text-left py-4 px-4 text-[15px] whitespace-nowrap font-semibold text-[#1c1c1c]">
-                                    Name
+                                    <div className="p-2"> Name</div>
                                 </th>
                                 <th className="text-left py-4 px-4 text-[15px] whitespace-nowrap font-semibold text-[#1c1c1c]">
                                     File Number
@@ -33,13 +33,15 @@ export default function RecentLabTests() {
                             </tr>
                         </thead>
                         <tbody>
-                            {recentLabTest.map((test, index) => (
+                            {recentLabTest.map((test) => (
                                 <tr
                                     key={test.fileNumber}
                                     className="hover:bg-white transition-colors"
                                 >
                                     <td className="py-4 px-4 text-[#1c1c1c] text-xs md:text-sm">
-                                        {test.name}
+                                        <div className="px-2 py-4">
+                                            {test.name}
+                                        </div>
                                     </td>
                                     <td className="py-4 px-4 text-[#1c1c1c] text-xs md:text-sm">
                                         {test.fileNumber}

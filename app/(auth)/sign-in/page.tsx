@@ -18,6 +18,7 @@ import { useForm } from "react-hook-form";
 import { CiLock } from "react-icons/ci";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { LuUser2 } from "react-icons/lu";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
     username: z.string().min(1, "Username is required"),
@@ -30,7 +31,8 @@ const formSchema = z.object({
         ),
 });
 export default function Login() {
-    const [user, setUser] = useState(null);
+    // const [user, setUser] = useState(null);
+    const router = useRouter();
 
     const [showPassword, setShowPassword] = useState(false);
     const handleTogglePassword = () => {
@@ -48,6 +50,8 @@ export default function Login() {
     function onSubmit(values: z.infer<typeof formSchema>) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
+        router.push("/dashboard");
+
         console.log(values);
     }
 
@@ -133,7 +137,7 @@ export default function Login() {
                                                 <Input
                                                     type="text"
                                                     placeholder="Enter Username"
-                                                    className="pl-10 input-class" // Padding for left icon
+                                                    className="pl-10 input-class text-stone-800" // Padding for left icon
                                                     {...field}
                                                 />
                                             </FormControl>
@@ -202,7 +206,7 @@ export default function Login() {
                                                             : "password"
                                                     }
                                                     placeholder="Enter Password"
-                                                    className="pl-10 pr-10 input-class" // Padding for icons
+                                                    className="pl-10 pr-10 input-class text-stone-800" // Padding for icons
                                                     {...field}
                                                 />
                                             </FormControl>
@@ -211,18 +215,18 @@ export default function Login() {
                                                 Forgot Password
                                             </p>
 
-                                            <FormMessage className="form-message mt-2" />
+                                            <FormMessage className="text-xs md:text-sm text-red-500 mt-2" />
                                         </div>
                                     </div>
                                 )}
                             />
 
-                            <Link
-                                href="/dashboard"
+                            <Button
+                                type="submit"
                                 className="block text-center w-full bg-[#F98E30] text-white font-bold text-[14px] md:text-[16px] py-3 rounded-lg"
                             >
                                 Submit
-                            </Link>
+                            </Button>
 
                             <p className="text-stone-900 text-[12px] md:text-[15px] font-medium text-center">
                                 Copyright &copy; 2022 Gynescope Specialist
