@@ -111,6 +111,19 @@ interface TestRecord {
     patientCategory: string;
     dateTime: string;
 }
+type ReportDetails = {
+    clinicalDetails: string;
+    dateTime: string;
+    specimen: string;
+    testRequired: string;
+};
+
+export const reportDetails = {
+    clinicalDetails: "Hematology/Serology Report",
+    dateTime: "01-05-2022 9:39am",
+    specimen: "Blood",
+    testRequired: "Hematology/Serology Report",
+};
 export const records: TestRecord[] = [
     {
         name: "Bella Geoffrey",

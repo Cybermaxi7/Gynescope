@@ -23,7 +23,7 @@ export default function HermatologySerelogyReport() {
             />
             <div className="flex flex-col p-4 md:p-7">
                 <div className="rounded-[10px] border-[#E2E3E4] border p-4 w-full mt-2 ">
-                    <h2 className="text-base md:text-lg font-semibold uppercase border-b border-[#1c1c1c] mb-9">
+                    <h2 className="text-base md:text-lg font-semibold uppercase border-b border-[#1c1c1c] mb-9 text-[#1C7DB4]">
                         Patient's Laboratory Details
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 w-full gap-4 md:gap-6 ">

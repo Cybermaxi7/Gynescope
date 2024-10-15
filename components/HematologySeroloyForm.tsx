@@ -3,6 +3,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Textarea } from "./ui/textarea";
+import { reportDetails } from "@/lib/data";
 
 export default function HematologySeroloyForm({
     currentStep,
@@ -548,6 +549,47 @@ export default function HematologySeroloyForm({
                                 {/* <ChevronRight size={20} /> */}
                                 <IoIosArrowForward />
                             </Button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {currentStep === 4 && (
+                <div className="rounded-[10px] border-[#E2E3E4] border p-4 w-full mt-2 ">
+                    <h2 className="text-base md:text-lg font-semibold uppercase border-b border-[#1c1c1c] mb-9 text-[#1C7DB4]">
+                        Laboratory Details
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 w-full gap-4 md:gap-6 ">
+                        <div className="flex gap-1 justify-center sm:justify-start ">
+                            <p className="text-xs md:text-sm font-semibold tracking-[2%]">
+                                Clinical Details:
+                            </p>
+                            <p className="text-xs md:text-sm font-normal tracking-[2%]">
+                                {reportDetails.clinicalDetails}
+                            </p>
+                        </div>
+                        <div className="flex gap-1 justify-center sm:justify-start">
+                            <p className="text-xs md:text-sm font-semibold tracking-[2%]">
+                                Date & Time of collection:
+                            </p>
+                            <p className="text-xs md:text-sm font-normal tracking-[2%]">
+                                {reportDetails.dateTime}
+                            </p>
+                        </div>
+                        <div className="flex gap-1 justify-center sm:justify-start">
+                            <p className="text-xs md:text-sm font-semibold tracking-[2%]">
+                                Specimen:
+                            </p>
+                            <p className="text-xs md:text-sm font-normal tracking-[2%]">
+                                {reportDetails.specimen}
+                            </p>
+                        </div>
+                        <div className="flex gap-1 justify-center sm:justify-start">
+                            <p className="text-xs md:text-sm font-semibold tracking-[2%]">
+                                Test Required:
+                            </p>
+                            <p className="text-xs md:text-sm font-normal tracking-[2%]">
+                                {reportDetails.testRequired}
+                            </p>
                         </div>
                     </div>
                 </div>

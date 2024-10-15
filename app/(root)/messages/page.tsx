@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+"use client";
 import HeaderInput from "@/components/HeaderInput";
 import HeaderNotifications from "@/components/HeaderNotifications";
 import MessageSidebar from "@/components/MessageSidebar";
@@ -7,8 +7,8 @@ import SingleMessage from "@/components/SingleMessage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import { useState } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { IoArrowBackSharp } from "react-icons/io5";
 import { TbSend2 } from "react-icons/tb";
 
 const messages = [
@@ -21,6 +21,11 @@ const messages = [
 ];
 
 export default function Messages() {
+    const [isPopUp, setIsPopUp] = useState(false);
+
+    function popUpMessage() {
+        setIsPopUp(!isPopUp);
+    }
     return (
         <div className="flex w-full">
             <header className="px-2 pb-1 fixed-header-2 md:px-6 lg:px-8">
@@ -54,7 +59,7 @@ export default function Messages() {
                 </div>
             </header>
             <div className="absolute top-[127px] md:top-0 ml-0 md:left-[140px] lg:left-[150px] 2xl:left-[194px] w-full sm:w-[300px] bg-[#C1E6F8]/40 h-screen flex z-40">
-                <MessageSidebar />
+                <MessageSidebar popUpMessage={popUpMessage} />
             </div>
             <div className="ml-[300px] w-full h-chat hidden sm:flex flex-col justify-between">
                 <div className="flex flex-col w-full gap-2 mt-5">
@@ -67,39 +72,44 @@ export default function Messages() {
                         />
                     ))}
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center gap-2 mb-2">
                     <Input type="input" placeholder="Type Message" />
 
-                    <div>
-                        <TbSend2 />
-                    </div>
+                    <Button className="h-10  w-10 rounded-full bg-[#EFF6FB] border border-[#CDEDFC] flex items-center p-0 justify-center">
+                        <TbSend2 className="text-[#CDEDFC] text-2xl" />
+                    </Button>
                 </div>
             </div>
             {/* Chat Popup Modal */}
-            <div className="w-full h-chat sm:hidden fixed top-[127px] left-0 flex flex-col justify-between z-[9999] bg-[#f6f9fc] px-4">
-                <div className="flex flex-col w-full gap-2">
-                    <Button className="justify-start flex items-center my-3 w-fit bg-slate-200">
-                        <IoIosArrowRoundBack className="text-4xl text-blue-600 font-bold" />
-                        Go Back
-                    </Button>
+            {isPopUp && (
+                <div className="w-full h-chat sm:hidden fixed top-[127px] left-0 flex flex-col justify-between z-[9999] bg-[#f6f9fc] px-4">
+                    <div className="flex flex-col w-full gap-2">
+                        <Button
+                            className="justify-start flex items-center my-3 w-fit bg-slate-200 text-xs"
+                            onClick={popUpMessage}
+                        >
+                            <IoIosArrowRoundBack className="text-2xl text-blue-600 font-bold" />
+                            Go Back
+                        </Button>
 
-                    {messages.map((message, index) => (
-                        <SingleMessage
-                            key={index}
-                            message={message.message}
-                            isSender={message.isSender}
-                            senderImg={message.senderImg}
-                        />
-                    ))}
-                </div>
-                <div className="flex items-center mb-4 ">
-                    <Input type="input" placeholder="Type Message" />
+                        {messages.map((message, index) => (
+                            <SingleMessage
+                                key={index}
+                                message={message.message}
+                                isSender={message.isSender}
+                                senderImg={message.senderImg}
+                            />
+                        ))}
+                    </div>
+                    <div className="flex items-center mb-4 ">
+                        <Input type="input" placeholder="Type Message" />
 
-                    <div>
-                        <TbSend2 />
+                        <Button className="w-10 h-10 rounded-full bg-[#EFF6FB] border border-[#CDEDFC] flex items-center p-0 justify-center">
+                            <TbSend2 className="text-[#CDEDFC] text-2xl" />
+                        </Button>
                     </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 }

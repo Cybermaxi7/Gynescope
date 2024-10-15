@@ -191,9 +191,9 @@ export default function PatientsTable() {
                                 </div>
                             </TableCell>
                             <TableCell>
-                                <div className="p-2 w-full flex items-center justify-center bg-[#d6f0f6]  rounded-[10px]">
+                                <Button className="p-2 w-full flex items-center justify-center bg-[#d6f0f6]  rounded-[10px]">
                                     <PlusIcon className="text-[#1C7DB4]  text-center" />
-                                </div>
+                                </Button>
                             </TableCell>
                         </TableRow>
                     ))}

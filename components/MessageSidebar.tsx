@@ -1,7 +1,11 @@
 import Image from "next/image";
 import HeaderInput from "./HeaderInput";
 
-export default function MessageSidebar() {
+export default function MessageSidebar({
+    popUpMessage,
+}: {
+    popUpMessage: () => void;
+}) {
     return (
         <div className="flex flex-col w-full px-4 mt-10">
             <div className="flex items-center gap-2 py-2 md:py-0">
@@ -51,7 +55,10 @@ export default function MessageSidebar() {
 
             <div className="flex flex-col gap-6 mt-6">
                 <h3 className="text-xs font-bold">Recent Chats</h3>
-                <div className="flex flex-col gap-1 text-xs">
+                <div
+                    className="flex flex-col gap-1 text-xs hover:bg-blue-200 cursor-pointer hover:rounded-[10px] hover:p-2"
+                    onClick={popUpMessage}
+                >
                     <div className="flex items-center justify-between">
                         <p className="text-[#1C7DB4] font-bold">Nurse Ada</p>
                         <p>12:55pm</p>
