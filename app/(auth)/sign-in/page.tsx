@@ -218,7 +218,7 @@ export default function Login() {
                             />
 
                             <Link
-                                href="/"
+                                href="/dashboard"
                                 className="block text-center w-full bg-[#F98E30] text-white font-bold text-[14px] md:text-[16px] py-3 rounded-lg"
                             >
                                 Submit

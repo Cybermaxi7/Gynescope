@@ -9,7 +9,7 @@ export default function Home() {
 
     useEffect(() => {
         // Redirect to the /sign-up page on page load
-        router.push("/sign-up");
+        router.push("/sign-in");
     }, [router]);
 
     return null; // Nothing will be rendered since we are redirecting
