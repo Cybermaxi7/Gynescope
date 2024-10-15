@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "./ui/button";
 
 import { IoIosArrowForward } from "react-icons/io";
@@ -18,10 +19,13 @@ export default function FindPatientsCard() {
                             requests and processing
                         </p>
                     </div>
-                    <Button className="bg-white w-fit flex items-center gap-1">
+                    <Link
+                        href="/patients"
+                        className="bg-white w-fit flex items-center gap-1 p-2 rounded-md"
+                    >
                         Find Patient
                         <IoIosArrowForward />
-                    </Button>
+                    </Link>
                 </div>
             </div>
         </div>

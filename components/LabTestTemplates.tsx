@@ -10,7 +10,7 @@ export default function LabTestTemplates() {
             <h3 className="uppercase text-base md:text-lg font-semibold tracking-[2%] pb-1 border-b border-[#E2E3E4]">
                 Laboratory test templates
             </h3>
-            <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4">
+            <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4 mt-3">
                 {labTestTemplatesCardData.map((data, index) => (
                     <Link
                         href={data.link}

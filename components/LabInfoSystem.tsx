@@ -1,6 +1,7 @@
 import { IoIosArrowForward } from "react-icons/io";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function LabInfoSystem() {
     return (
@@ -19,10 +20,13 @@ export default function LabInfoSystem() {
                         testing, including hematology, chemistry, immunology and
                         microbiology.
                     </p>
-                    <Button className="bg-[#1C7DB4] w-fit flex items-center gap-1 text-white mt-4">
+                    <Link
+                        href="/test-templates"
+                        className="bg-[#1C7DB4] w-fit flex items-center gap-1 text-white mt-4 p-2 rounded-md"
+                    >
                         View Test Templates
                         <IoIosArrowForward />
-                    </Button>
+                    </Link>
                 </div>
                 <div className="bg-gradient-to-r from-[#1C7DB4] to-[#0d4361] w-full flex items-end justify-start pb-5 pl-2 rounded-[10px] h-32 sm:h-full">
                     <Image

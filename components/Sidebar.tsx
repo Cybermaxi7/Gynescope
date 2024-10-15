@@ -8,7 +8,7 @@ export default function Sidebar() {
         <div>
             <aside className="hidden md:flex flex-col w-[140px] lg:w-[150px] 2xl:w-[194px] min-h-screen bg-[#1C7DB4] fixed">
                 {/* logo */}
-                <Link href="/" className="w-full">
+                <Link href="/dashboard" className="w-full">
                     <Image
                         src="/icons/dashboardlogo.svg"
                         width={194}
