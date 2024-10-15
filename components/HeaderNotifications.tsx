@@ -13,8 +13,8 @@ import HeaderInput from "./HeaderInput";
 export default function HeaderNotifications() {
     const formatDate = () => {
         const today = new Date();
-        const options = {
-            weekday: "long",
+        const options: Intl.DateTimeFormatOptions = {
+            weekday: "long", // "long" is a valid value
             day: "numeric",
             month: "long",
             year: "numeric",
