@@ -12,7 +12,7 @@ export type SidebarItem = {
     alt: string;
 };
 
-declare type HeaderIntro = {
+declare type HeaderIntroType = {
     heading: string;
     subheading: string;
 };

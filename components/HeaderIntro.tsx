@@ -1,6 +1,6 @@
-import { HeaderIntro } from "@/types";
+import { HeaderIntroType } from "@/types";
 
-export default function HeaderIntro({ heading, subheading }: HeaderIntro) {
+export default function HeaderIntro({ heading, subheading }: HeaderIntroType) {
     return (
         <div className="flex flex-col items-start py-2 md:py-0  gap-1">
             <h3 className="text-[#09126E] font-bold text-xl md:text-2xl ">
