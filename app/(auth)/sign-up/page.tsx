@@ -10,22 +10,30 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import Link from "next/link";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { CiLock } from "react-icons/ci";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { LuUser2 } from "react-icons/lu";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import Link from "next/link";
 
 const formSchema = z.object({
+    username: z.string().min(1, "Username is required"),
     email: z.string().email("Please enter a valid email"),
-    password: z.string().min(8, "Password must be at least 8 characters"),
+    password: z
+        .string()
+        .min(8, "Password must be at least 8 characters")
+        .regex(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+            "Password must contain at least one uppercase letter, one lowercase letter, and one number"
+        ),
 });
 
-export default function SignIn() {
+export default function Signup() {
     const router = useRouter();
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -38,27 +46,35 @@ export default function SignIn() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            username: "",
             email: "",
             password: "",
         },
     });
 
-    // Submit handler for sign-in
+    // Submit handler with Supabase integration
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        setLoading(true); // Set loading to true when submission starts
-        const { email, password } = values;
+        const { username, email, password } = values;
         setError(null);
+        setLoading(true); // Set loading to true when submission starts
 
-        // Supabase sign-in logic with email and password
-        const { error } = await supabase.auth.signInWithPassword({
+        // Supabase sign-up logic with email and password
+        const { error } = await supabase.auth.signUp({
             email,
             password,
+            options: {
+                data: {
+                    username, // Store username in the user metadata
+                },
+            },
         });
-        setLoading(false);
+
+        setLoading(false); // Reset loading state after submission
+
         if (error) {
             setError(error.message);
         } else {
-            router.push("/dashboard"); // Redirect to the home page or dashboard after sign in
+            router.push("/confirm");
         }
     };
 
@@ -90,19 +106,47 @@ export default function SignIn() {
             <section className="z-10 font-poppins text-white flex flex-col gap-6 px-2 md:px-0">
                 <header className="flex flex-col items-center justify-center">
                     <h1 className="text-[35px] md:text-[45px] font-semibold text-center ">
-                        Welcome Back
+                        Welcome back
                     </h1>
                     <p className="text-[16px] md:text-[20px] font-medium text-center">
-                        Kindly enter your sign-in credentials.
+                        Kindly enter your sign-up credentials.
                     </p>
                 </header>
 
-                <div className="bg-white px-4 md:px-6 py-5 md:py-7 rounded-[15px] w-full max-w-[600px]">
+                <div className="bg-white px-4 md:px-6 py-5 md:py-7 rounded-[15px] w-ful max-w-[600px]">
                     <Form {...form}>
                         <form
                             onSubmit={form.handleSubmit(onSubmit)}
                             className="space-y-8"
                         >
+                            <FormField
+                                control={form.control}
+                                name="username"
+                                render={({ field }) => (
+                                    <div className="form-item">
+                                        <FormLabel className="text-[14px] md:text-[17px] font-semibold tracking-[5%] text-[#1C1C1C]">
+                                            Username
+                                        </FormLabel>
+                                        <div className="relative w-full flex flex-col">
+                                            <span className="absolute left-2 top-1/2 transform -translate-y-1/2">
+                                                <LuUser2 className="text-[#707070] w-4 md:w-5 h-4 md:h-5" />
+                                            </span>
+
+                                            <FormControl>
+                                                <Input
+                                                    type="text"
+                                                    placeholder="Enter Username"
+                                                    className="pl-10 input-class text-stone-800"
+                                                    {...field}
+                                                />
+                                            </FormControl>
+
+                                            <FormMessage className="form-message mt-2" />
+                                        </div>
+                                    </div>
+                                )}
+                            />
+
                             <FormField
                                 control={form.control}
                                 name="email"
@@ -186,13 +230,14 @@ export default function SignIn() {
                                 {/* Show loading text */}
                             </Button>
                             <p className="text-stone-800">
-                                Not a user?{" "}
+                                Already a user?
                                 <Link
-                                    href="/sign-up"
+                                    href="/sign-in"
                                     className="text-blue-500 font-semibold"
                                 >
-                                    Sign Up
-                                </Link>{" "}
+                                    {" "}
+                                    Sign In
+                                </Link>
                             </p>
 
                             <p className="text-stone-900 text-[12px] md:text-[15px] font-medium text-center">

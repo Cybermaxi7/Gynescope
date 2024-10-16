@@ -11,21 +11,57 @@ import { useState } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { TbSend2 } from "react-icons/tb";
 
-const messages = [
-    { message: "Hi Victor!", senderImg: "/images/ada.jpg", isSender: false },
-    {
-        message: "Hi Nurse Ada!",
-        senderImg: "/images/victor.jpg",
-        isSender: true,
-    },
-];
+// const messages = [
+//     { message: "Hi Victor!", senderImg: "/images/ada.jpg", isSender: false },
+//     {
+//         message: "Hi Nurse Ada!",
+//         senderImg: "/images/victor.jpg",
+//         isSender: true,
+//     },
+// ];
 
 export default function Messages() {
     const [isPopUp, setIsPopUp] = useState(false);
+    const [newMessage, setNewMessage] = useState(""); // To store the new message
+    const [messages, setMessages] = useState([
+        {
+            message: "Hi Victor!",
+            senderImg: "/images/ada.jpg",
+            isSender: false,
+        },
+        {
+            message: "Hi Nurse Ada!",
+            senderImg: "/images/victor.jpg",
+            isSender: true,
+        },
+    ]);
 
+    // Function to toggle the chat popup
     function popUpMessage() {
         setIsPopUp(!isPopUp);
     }
+
+    // Function to handle message input
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setNewMessage(e.target.value);
+    };
+
+    // submit form with event and typescript validation for the event
+
+    // Function to send message and add to the array
+    const sendMessage = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (newMessage.trim() === "") return; // Prevent sending empty messages
+
+        const newMsgObj = {
+            message: newMessage,
+            senderImg: "/images/victor.jpg", // Example: using Victor as the sender for new messages
+            isSender: true, // Mark the new message as sent by the user
+        };
+
+        setMessages([...messages, newMsgObj]); // Add the new message to the existing messages
+        setNewMessage(""); // Clear the input after sending
+    };
     return (
         <div className="flex w-full">
             <header className="px-2 pb-1 fixed-header-2 md:px-6 lg:px-8">
@@ -72,13 +108,21 @@ export default function Messages() {
                         />
                     ))}
                 </div>
-                <div className="flex items-center gap-2 mb-2">
-                    <Input type="input" placeholder="Type Message" />
+                <form
+                    onSubmit={sendMessage}
+                    className="flex items-center mb-8 md:mb-4 gap-2"
+                >
+                    <Input
+                        type="input"
+                        placeholder="Type Message"
+                        value={newMessage}
+                        onChange={handleInputChange} // Handle input change
+                    />
 
                     <Button className="h-10  w-10 rounded-full bg-[#EFF6FB] border border-[#CDEDFC] flex items-center p-0 justify-center">
                         <TbSend2 className="text-[#CDEDFC] text-2xl" />
                     </Button>
-                </div>
+                </form>
             </div>
             {/* Chat Popup Modal */}
             {isPopUp && (
@@ -101,13 +145,21 @@ export default function Messages() {
                             />
                         ))}
                     </div>
-                    <div className="flex items-center mb-8 md:mb-4 ">
-                        <Input type="input" placeholder="Type Message" />
+                    <form
+                        onSubmit={sendMessage}
+                        className="flex items-center mb-8 md:mb-4 "
+                    >
+                        <Input
+                            type="input"
+                            placeholder="Type Message"
+                            value={newMessage}
+                            onChange={handleInputChange} // Handle input change
+                        />
 
-                        <Button className="w-10 h-10 rounded-full bg-[#EFF6FB] border border-[#CDEDFC] flex items-center p-0 justify-center">
+                        <Button className="h-10  w-10 rounded-full bg-[#EFF6FB] border border-[#CDEDFC] flex items-center p-0 justify-center">
                             <TbSend2 className="text-[#CDEDFC] text-2xl" />
                         </Button>
-                    </div>
+                    </form>
                 </div>
             )}
         </div>

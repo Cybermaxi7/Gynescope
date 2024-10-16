@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { patientsLabData } from "@/lib/data";
+import Link from "next/link";
 
 export default function PatientLabDetails() {
     return (
@@ -9,15 +10,18 @@ export default function PatientLabDetails() {
                 <h2 className="text-base md:text-lg font-semibold uppercase">
                     Patient's Laboratory Details
                 </h2>
-                <Button className="font-medium text-xs md:text-sm text-[#1C7DB4] flex items-center gap-1 border rounded-[10px] border-[#B5B5B5]">
+                <Link
+                    href="/patients/overview"
+                    className="font-medium text-xs md:text-sm text-[#1C7DB4] flex items-center gap-1 border rounded-[10px] border-[#B5B5B5] p-2"
+                >
                     <Image
                         src="/icons/blue-user.svg"
                         alt="blue user icon"
-                        width={20}
-                        height={20}
+                        width={15}
+                        height={15}
                     />
                     View Patient Profile
-                </Button>
+                </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 w-full gap-4 md:gap-6 ">
                 {patientsLabData.map((patientsData, index) => (
