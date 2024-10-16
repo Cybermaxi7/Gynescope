@@ -28,9 +28,15 @@ export default function Logout() {
     return (
         <div>
             <Header heading="Logout" subheading="Logout Page" />
-            <Button onClick={handleSignOut} disabled={loading}>
-                {loading ? "Logging out..." : "Sign Out"}
-            </Button>
+            <div className="flex items-center justify-center w-full mt-[10rem]">
+                <Button
+                    onClick={handleSignOut}
+                    disabled={loading}
+                    className="bg-blue-500 text-white"
+                >
+                    {loading ? "Logging out..." : "Sign Out"}
+                </Button>
+            </div>
         </div>
     );
 }
