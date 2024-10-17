@@ -1,21 +1,4 @@
-interface PatientDetailsProps {
-    patient: {
-        name: string;
-        gender: string;
-        dateOfBirth: string;
-        placeOfBirth: string;
-        occupation: string;
-        contact: string;
-        altContact: string;
-        email: string;
-        nationality: string;
-        stateOfOrigin: string;
-        lgaOfOrigin: string;
-        ethnicity: string;
-        religion: string;
-        maritalStatus: string;
-    };
-}
+import { PatientDetailsProps } from "@/types";
 
 export default function PatientDetailsCard({ patient }: PatientDetailsProps) {
     return (

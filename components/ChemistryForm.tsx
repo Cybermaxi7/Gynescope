@@ -184,7 +184,7 @@ export default function ChemistryForm({
                 </div>
             )}
 
-            {/* Form Step 2 (Similar structure for demonstration) */}
+            {/* Form Step 2 */}
             {currentStep === 2 && (
                 <div className="space-y-6">
                     {/* RENAL FUNCTION TEST  */}
@@ -352,6 +352,7 @@ export default function ChemistryForm({
                     </div>
                 </div>
             )}
+            {/* Form Step 3  */}
             {currentStep === 3 && (
                 <div className="space-y-6">
                     {/* RENAL FUNCTION TEST  */}

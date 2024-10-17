@@ -7,7 +7,7 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { PlusCircle, PlusIcon } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import Image from "next/image";
 import laboratoryKitIcon from "../public/icons/laboratory-kit.svg";
 

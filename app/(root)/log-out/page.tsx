@@ -19,7 +19,7 @@ export default function Logout() {
             // Redirect to sign-in page after successful sign-out
             router.push("/sign-in");
         } catch (error) {
-            console.error("Failed to sign out");
+            console.error("Failed to sign out", error);
         } finally {
             setLoading(false); // Stop loading after process completes
         }

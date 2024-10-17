@@ -176,9 +176,7 @@ export default function AntiMullerianForm({
                 onClick={handleSubmit}
                 className="bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center gap-4 h over:bg-blue-600 text-xs md:text-sm font-semibold my-8 w-fit ml-auto"
             >
-                {/* <IoIosArrowForward /> */}
                 Submit
-                {/* <ChevronRight size={20} /> */}
             </Button>
         </div>
     );

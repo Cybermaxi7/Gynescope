@@ -43,7 +43,7 @@ export default function SignIn() {
         },
     });
 
-    // Submit handler for sign-in
+    // Submit handler for sign-in with supabase
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         setLoading(true); // Set loading to true when submission starts
         const { email, password } = values;
@@ -97,11 +97,11 @@ export default function SignIn() {
                     </p>
                 </header>
 
-                <div className="bg-white px-4 md:px-6 py-5 md:py-7 rounded-[15px] w-full max-w-[600px]">
+                <div className="bg-white px-4 md:px-6 py-5 md:py-7 rounded-[15px] w-full sm:[600px] md:w-[700px]">
                     <Form {...form}>
                         <form
                             onSubmit={form.handleSubmit(onSubmit)}
-                            className="space-y-8"
+                            className="space-y-8 w-full"
                         >
                             <FormField
                                 control={form.control}

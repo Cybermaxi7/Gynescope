@@ -24,8 +24,8 @@ export default function Nav() {
                     <Link
                         className={`flex flex-col items-center justify-center py-3 gap-1 transition-all duration-300 ease-in-out hover:bg-white/20 ${
                             isActive
-                                ? "border-r-4 border-[#F98E30]" // Active styles
-                                : "hover:border-r-4 hover:border-[#F98E30]" // Hover styles
+                                ? "border-r-4 border-[#F98E30]"
+                                : "hover:border-r-4 hover:border-[#F98E30]"
                         }`}
                         key={link.link}
                         href={link.link}

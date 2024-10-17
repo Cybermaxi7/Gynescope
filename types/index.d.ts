@@ -58,3 +58,71 @@ declare type NewUserParams = {
     name: string;
     password: string;
 };
+
+declare type AddressDetailsProps = {
+    address: {
+        streetOfResidence: string;
+        cityOfResidence: string;
+        stateOfResidence: string;
+        lgaOfResidence: string;
+    };
+};
+
+declare type EmergencyContactProps = {
+    contact: {
+        spouseName: string;
+        contact: string;
+        altContact: string;
+        email: string;
+        streetOfResidence: string;
+        stateOfResidence: string;
+        lgaOfResidence: string;
+    };
+};
+
+declare type HospitalDetailsProps = {
+    details: {
+        category: string;
+        registrationPrefix: string;
+        registrationCode: string;
+        fileNumber: string;
+        entryDate: string;
+        expiryDate: string;
+        referrer: string;
+        referenceNumber: string;
+        medic: string;
+        previousHospital: string;
+        transferLetter: string;
+    };
+};
+
+declare type PatientDetailsProps = {
+    patient: {
+        name: string;
+        gender: string;
+        dateOfBirth: string;
+        placeOfBirth: string;
+        occupation: string;
+        contact: string;
+        altContact: string;
+        email: string;
+        nationality: string;
+        stateOfOrigin: string;
+        lgaOfOrigin: string;
+        ethnicity: string;
+        religion: string;
+        maritalStatus: string;
+    };
+};
+
+declare type SpouseDetailsProps = {
+    spouse: {
+        name: string;
+        contact: string;
+        email: string;
+        occupation: string;
+        streetOfResidence: string;
+        stateOfResidence: string;
+        lgaOfResidence: string;
+    };
+};

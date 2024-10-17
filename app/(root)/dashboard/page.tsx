@@ -6,7 +6,7 @@ import Overview from "@/components/Overview";
 import { useState, useEffect } from "react";
 import OverviewTestCards from "@/components/OverviewTestCards";
 import RecentLabTests from "@/components/RecentLabTests";
-import { Session } from "@supabase/supabase-js"; // Import the correct type for Session
+import { Session } from "@supabase/supabase-js";
 import ScheduledTasks from "@/components/ScheduledTasks";
 import Header from "@/components/Header";
 import { supabase } from "@/lib/supabaseClient";

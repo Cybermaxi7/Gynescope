@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import { FaPlus } from "react-icons/fa";
+
 import {
     Table,
     TableBody,
@@ -15,34 +14,6 @@ import { records } from "@/lib/data";
 
 export default function LaboratoryTestTable() {
     return (
-        // <div className="w-full overflow-x-auto">
-        //     <table className="table w-full">
-        //         <thead>
-        //             <tr>
-        //                 <th className="w-[100px]">Name</th>
-        //                 <th>File Number</th>
-        //                 <th>Lab Code</th>
-        //                 <th>Test Type</th>
-        //                 <th>Sample</th>
-        //                 <th>Patient's Category</th>
-        //                 <th>Date & Time of Request</th>
-        //             </tr>
-        //         </thead>
-        //         <tbody>
-        //             {records.map((record) => (
-        //                 <tr key={record.name}>
-        //                     <td>{record.name}</td>
-        //                     <td>{record.fileNumber}</td>
-        //                     <td>{record.labCode}</td>
-        //                     <td>{record.testType}</td>
-        //                     <td>{record.sample}</td>
-        //                     <td>{record.patientCategory}</td>
-        //                     <td>{record.dateTime}</td>
-        //                 </tr>
-        //             ))}
-        //         </tbody>
-        //     </table>
-        // </div>
         <div className="w-full">
             <div className="w-[90%]">
                 <Table>

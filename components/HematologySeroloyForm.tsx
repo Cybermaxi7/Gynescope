@@ -179,7 +179,6 @@ export default function HematologySeroloyForm({
                             >
                                 <IoIosArrowForward />
                                 Next
-                                {/* <ChevronRight size={20} /> */}
                             </Button>
                         </div>
                     </div>
@@ -370,7 +369,6 @@ export default function HematologySeroloyForm({
                                 onClick={handlePrev}
                                 className="bg-[#E4F3FA] text-[#1C7DB4] px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gray-600 text-xs md:text-sm font-semibold"
                             >
-                                {/* <ChevronLeft size={20} /> */}
                                 <IoIosArrowBack />
                                 Previous
                             </Button>
@@ -379,7 +377,6 @@ export default function HematologySeroloyForm({
                                 className="bg-[#1C7DB4] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-600 text-xs md:text-sm font-semibold"
                             >
                                 Next
-                                {/* <ChevronRight size={20} /> */}
                                 <IoIosArrowForward />
                             </Button>
                         </div>
@@ -553,6 +550,7 @@ export default function HematologySeroloyForm({
                     </div>
                 </div>
             )}
+            {/* Form Step 4  */}
             {currentStep === 4 && (
                 <div className="rounded-[10px] border-[#E2E3E4] border p-4 w-full mt-2 ">
                     <h2 className="text-base md:text-lg font-semibold uppercase border-b border-[#1c1c1c] mb-9 text-[#1C7DB4]">

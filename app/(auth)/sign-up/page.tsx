@@ -17,7 +17,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { CiLock } from "react-icons/ci";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { LuUser2 } from "react-icons/lu";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -113,13 +112,13 @@ export default function Signup() {
                     </p>
                 </header>
 
-                <div className="bg-white px-4 md:px-6 py-5 md:py-7 rounded-[15px] w-ful max-w-[600px]">
+                <div className="bg-white px-4 md:px-6 py-5 md:py-7 rounded-[15px] w-full sm:[600px] md:w-[700px]">
                     <Form {...form}>
                         <form
                             onSubmit={form.handleSubmit(onSubmit)}
                             className="space-y-8"
                         >
-                            <FormField
+                            {/* <FormField
                                 control={form.control}
                                 name="username"
                                 render={({ field }) => (
@@ -145,7 +144,7 @@ export default function Signup() {
                                         </div>
                                     </div>
                                 )}
-                            />
+                            /> */}
 
                             <FormField
                                 control={form.control}
@@ -211,9 +210,8 @@ export default function Signup() {
                                             <p className="text-[#1C7DB4] font-semibold text-[12px] md:text-[15px] self-end mt-1">
                                                 Forgot Password
                                             </p>
-
-                                            <FormMessage className="text-xs md:text-sm text-red-500 mt-2" />
                                         </div>
+                                        <FormMessage className="text-xs md:text-sm text-red-500 mt-2" />
                                     </div>
                                 )}
                             />

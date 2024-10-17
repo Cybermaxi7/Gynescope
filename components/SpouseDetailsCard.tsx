@@ -1,14 +1,4 @@
-interface SpouseDetailsProps {
-    spouse: {
-        name: string;
-        contact: string;
-        email: string;
-        occupation: string;
-        streetOfResidence: string;
-        stateOfResidence: string;
-        lgaOfResidence: string;
-    };
-}
+import { SpouseDetailsProps } from "@/types";
 
 export function SpouseDetailsCard({ spouse }: SpouseDetailsProps) {
     return (

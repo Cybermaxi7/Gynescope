@@ -11,15 +11,6 @@ import { useState } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { TbSend2 } from "react-icons/tb";
 
-// const messages = [
-//     { message: "Hi Victor!", senderImg: "/images/ada.jpg", isSender: false },
-//     {
-//         message: "Hi Nurse Ada!",
-//         senderImg: "/images/victor.jpg",
-//         isSender: true,
-//     },
-// ];
-
 export default function Messages() {
     const [isPopUp, setIsPopUp] = useState(false);
     const [newMessage, setNewMessage] = useState(""); // To store the new message
@@ -46,8 +37,6 @@ export default function Messages() {
         setNewMessage(e.target.value);
     };
 
-    // submit form with event and typescript validation for the event
-
     // Function to send message and add to the array
     const sendMessage = (e: React.FormEvent) => {
         e.preventDefault();
@@ -55,8 +44,8 @@ export default function Messages() {
 
         const newMsgObj = {
             message: newMessage,
-            senderImg: "/images/victor.jpg", // Example: using Victor as the sender for new messages
-            isSender: true, // Mark the new message as sent by the user
+            senderImg: "/images/victor.jpg",
+            isSender: true,
         };
 
         setMessages([...messages, newMsgObj]); // Add the new message to the existing messages

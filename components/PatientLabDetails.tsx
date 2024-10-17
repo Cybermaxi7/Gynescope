@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Button } from "./ui/button";
 import { patientsLabData } from "@/lib/data";
 import Link from "next/link";
 
@@ -28,7 +27,7 @@ export default function PatientLabDetails() {
                     <>
                         <div
                             key={index}
-                            className="flex gap-1 justify-center sm:justify-start justify-center"
+                            className="flex gap-1 justify-center sm:justify-start "
                         >
                             <p className="text-xs md:text-sm font-semibold tracking-[2%]">
                                 Name:

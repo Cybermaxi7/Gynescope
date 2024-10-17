@@ -1,18 +1,4 @@
-interface HospitalDetailsProps {
-    details: {
-        category: string;
-        registrationPrefix: string;
-        registrationCode: string;
-        fileNumber: string;
-        entryDate: string;
-        expiryDate: string;
-        referrer: string;
-        referenceNumber: string;
-        medic: string;
-        previousHospital: string;
-        transferLetter: string;
-    };
-}
+import { HospitalDetailsProps } from "@/types";
 
 export function HospitalDetailsCard({ details }: HospitalDetailsProps) {
     return (

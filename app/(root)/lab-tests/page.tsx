@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import LaboratoryTestCard from "@/components/LaboratoryTestCard";
-import LaboratoryTestTable from "@/components/LaboratoryTestTable";
 import PatientsTable from "@/components/PatientsTable";
 
 export default function LabTest() {
@@ -17,9 +16,7 @@ export default function LabTest() {
                     </h4>
                     <LaboratoryTestCard />
                 </div>
-                {/* <div className="overflow-x-auto w-full"> */}
                 <PatientsTable />
-                {/* </div> */}
             </div>
         </div>
     );

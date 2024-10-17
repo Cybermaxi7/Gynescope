@@ -1,11 +1,4 @@
-interface AddressDetailsProps {
-    address: {
-        streetOfResidence: string;
-        cityOfResidence: string;
-        stateOfResidence: string;
-        lgaOfResidence: string;
-    };
-}
+import { AddressDetailsProps } from "@/types";
 
 export function AddressDetailsCard({ address }: AddressDetailsProps) {
     return (

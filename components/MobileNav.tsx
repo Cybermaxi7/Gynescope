@@ -9,7 +9,6 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 import sidebarItems from "@/lib/sidebarItems";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,13 +20,6 @@ export default function MobileNav() {
         <nav className="w-full max-w-[194px]">
             <Sheet>
                 <SheetTrigger className="mt-3  mr-3">
-                    {/* <Image
-                        src="/icons/hamburger.svg"
-                        alt="menu logo"
-                        width={40}
-                        height={40}
-                        className="cursor-pointer"
-                    /> */}
                     <RiMenu2Fill className="text-4xl" />
                 </SheetTrigger>
                 <SheetContent

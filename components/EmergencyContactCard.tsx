@@ -1,14 +1,4 @@
-interface EmergencyContactProps {
-    contact: {
-        spouseName: string;
-        contact: string;
-        altContact: string;
-        email: string;
-        streetOfResidence: string;
-        stateOfResidence: string;
-        lgaOfResidence: string;
-    };
-}
+import { EmergencyContactProps } from "@/types";
 
 export function EmergencyContactCard({ contact }: EmergencyContactProps) {
     return (
