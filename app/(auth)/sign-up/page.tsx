@@ -19,6 +19,7 @@ import { CiLock } from "react-icons/ci";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { LuUser2 } from "react-icons/lu";
 
 const formSchema = z.object({
     username: z.string().min(1, "Username is required"),
@@ -53,27 +54,36 @@ export default function Signup() {
 
     // Submit handler with Supabase integration
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        console.log("Form submitted with values:", values);
         const { username, email, password } = values;
         setError(null);
-        setLoading(true); // Set loading to true when submission starts
+        setLoading(true);
 
-        // Supabase sign-up logic with email and password
-        const { error } = await supabase.auth.signUp({
-            email,
-            password,
-            options: {
-                data: {
-                    username, // Store username in the user metadata
+        try {
+            console.log("Attempting to sign up with Supabase...");
+            const { data, error } = await supabase.auth.signUp({
+                email,
+                password,
+                options: {
+                    data: {
+                        username,
+                    },
                 },
-            },
-        });
+            });
+            console.log("Supabase sign-up response:", { data, error });
 
-        setLoading(false); // Reset loading state after submission
-
-        if (error) {
-            setError(error.message);
-        } else {
-            router.push("/confirm");
+            if (error) {
+                console.error("Supabase sign-up error:", error);
+                setError(error.message);
+            } else {
+                console.log("Sign-up successful, redirecting to confirm page");
+                router.push("/confirm");
+            }
+        } catch (err) {
+            console.error("Unexpected error during sign-up:", err);
+            setError("An unexpected error occurred. Please try again.");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -118,7 +128,7 @@ export default function Signup() {
                             onSubmit={form.handleSubmit(onSubmit)}
                             className="space-y-8"
                         >
-                            {/* <FormField
+                            <FormField
                                 control={form.control}
                                 name="username"
                                 render={({ field }) => (
@@ -144,7 +154,7 @@ export default function Signup() {
                                         </div>
                                     </div>
                                 )}
-                            /> */}
+                            />
 
                             <FormField
                                 control={form.control}
@@ -223,6 +233,9 @@ export default function Signup() {
                                 type="submit"
                                 className="block text-center w-full bg-[#F98E30] text-white font-bold text-[14px] md:text-[16px] py-3 rounded-lg"
                                 disabled={loading} // Disable button when loading
+                                onClick={() =>
+                                    console.log("Submit button clicked")
+                                }
                             >
                                 {loading ? "Loading..." : "Submit"}{" "}
                                 {/* Show loading text */}

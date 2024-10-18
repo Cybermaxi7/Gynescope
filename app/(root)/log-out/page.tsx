@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import Header from "@/components/Header";
 import { useRouter } from "next/navigation";
@@ -9,10 +10,15 @@ export default function Logout() {
     const [loading, setLoading] = useState(false); // Loading state
     const router = useRouter();
 
+    // Clear local storage and sign out
     const handleSignOut = async () => {
         setLoading(true); // Start loading
 
         try {
+            // Clear any session-related data in local storage
+            localStorage.removeItem("supabase.auth.token");
+
+            // Supabase sign-out
             const { error } = await supabase.auth.signOut();
             if (error) throw error;
 

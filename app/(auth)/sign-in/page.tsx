@@ -16,7 +16,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { CiLock } from "react-icons/ci";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import Link from "next/link";
 
@@ -27,6 +27,8 @@ const formSchema = z.object({
 
 export default function SignIn() {
     const router = useRouter();
+    const searchParams = useSearchParams(); // Hook to get search params (query)
+
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false); // Loading state
@@ -45,20 +47,33 @@ export default function SignIn() {
 
     // Submit handler for sign-in with supabase
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        setLoading(true); // Set loading to true when submission starts
+        setLoading(true);
         const { email, password } = values;
         setError(null);
 
         // Supabase sign-in logic with email and password
-        const { error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
         setLoading(false);
+
         if (error) {
             setError(error.message);
         } else {
-            router.push("/dashboard"); // Redirect to the home page or dashboard after sign in
+            // Store the session in localStorage if login is successful
+            if (data.session) {
+                localStorage.setItem(
+                    "supabaseSession",
+                    JSON.stringify(data.session)
+                );
+            }
+
+            // Get the redirectedFrom query parameter if available, or default to /dashboard
+            const redirectedFrom = searchParams.get("redirectedFrom") || "/";
+
+            // Redirect to either the original page or the dashboard
+            router.push(redirectedFrom);
         }
     };
 

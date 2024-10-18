@@ -8,7 +8,7 @@ const sidebarItems: SidebarItem[] = [
     {
         title: "Dashboard",
         icon: "/icons/dashboard.svg",
-        link: "/dashboard",
+        link: "/",
         alt: "Dashboard Icon",
     },
     {
