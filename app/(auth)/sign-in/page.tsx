@@ -31,6 +31,7 @@ export default function SignIn() {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const searchParams = useSearchParams();
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
