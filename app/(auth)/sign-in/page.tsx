@@ -16,7 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { CiLock } from "react-icons/ci";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { useRouter, useSearchParams } from "next/navigation"; // Still using useSearchParams
+import { useRouter } from "next/navigation"; // Still using useSearchParams
 import { supabase } from "@/lib/supabaseClient";
 import Link from "next/link";
 
@@ -31,7 +31,6 @@ export default function SignIn() {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
-    const searchParams = useSearchParams();
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
@@ -66,8 +65,7 @@ export default function SignIn() {
                     JSON.stringify(data.session)
                 );
             }
-            const redirectedFrom = searchParams.get("redirectedFrom") || "/";
-            router.push(redirectedFrom);
+            router.push("/");
         }
     };
 
